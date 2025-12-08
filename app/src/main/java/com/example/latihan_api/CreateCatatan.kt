@@ -45,13 +45,14 @@ class CreateCatatan : AppCompatActivity() {
             val payload = Catatan(
                 judul = judul,
                 isi = isi,
-                id = null
+                id = null,
+                user_id = 1
             )
 
             lifecycleScope.launch {
                 val response = RetrofitClient.catatanRepository.createCatatan(payload)
                 if (response.isSuccessful) {
-                    displayMessage("Catata berhasil dibuat")
+                    displayMessage("Catatan berhasil dibuat")
 
                     val intent = Intent(this@CreateCatatan, MainActivity::class.java)
                     startActivity(intent)
